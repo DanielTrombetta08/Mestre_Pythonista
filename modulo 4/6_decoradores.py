@@ -1,5 +1,7 @@
+from datetime import datetime
+
 # Decoretors
-def pai(numero):
+""" def pai(numero):
     def filho_1():
         print('Sou filho 1')
     def filho_2():
@@ -21,4 +23,17 @@ def meu_decorator(funcao):
 def parabenizar():
     print('Parabéns')
 
-parabenizar()
+parabenizar() """
+
+def meu_decorator(funcao):
+    def wrapper():
+        print(datetime.now())
+        funcao()
+        print(datetime.now())
+    return wrapper
+
+@meu_decorator
+def bom_dia():
+    print('Bom dia')
+
+bom_dia()
