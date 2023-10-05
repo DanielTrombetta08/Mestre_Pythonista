@@ -1,0 +1,40 @@
+{
+    "user": [
+        {
+            "id": 1,
+            "name": "John Smith",
+            "email": "john.smith@example.com",
+            "address": {
+                "street": "123 Main St",
+                "city": "New York",
+                "state": "NY",
+                "zipcode": "10001"
+            },
+            "phone": "555-555-5555",
+            "orders": [
+                {
+                    "order_id": "A001",
+                    "total": 120.99
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Jane Doe",
+            "email": "jane.doe@example.com",
+            "address": {
+                "street": "456 Park Ave",
+                "city": "Los Angeles",
+                "state": "CA",
+                "zipcode": "90001"
+            },
+            "phone": "555-555-5556",
+            "orders": [
+                {
+                    "order_id": "C003",
+                    "total": 67.50
+                }
+            ]
+        }
+    ]
+}
