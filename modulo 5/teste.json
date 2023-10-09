@@ -1,0 +1,7 @@
+{
+    "name": "John Smith",
+    "age": 30,
+    "city": "New York",
+    "isStudent": true,
+    "gpa": 3.5
+}
