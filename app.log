@@ -1,0 +1,7 @@
+DEBUG - Logging no nivel debug
+INFO - Logging no nivel info
+WARNING - Logging no nivel warning
+ERROR - Logging no nivel error
+CRITICAL - Logging no nivel critical
+INFO - daniel@hotmail entrou em sua conta bancária - 2023-10-10 06:55:29,531
+WARNING - invalid literal for int() with base 10: 'jj' - 2023-10-10 06:56:54,543
