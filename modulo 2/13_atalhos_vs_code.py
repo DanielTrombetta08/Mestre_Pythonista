@@ -12,7 +12,7 @@
 # Find = CRTL + F
 # Replace = CTRL + H   => CTRL + ALT + ENTER
 # Alterar entre arquivos = CTRL + P  => CTRL + ENTER abre na janela ao lado
-# Fechara a janela atual = CTRL + W
+# Fechar a janela atual = CTRL + W
 # Código fonte da biblioteca = F12 
 # Selecionar palavras repetidas = CTRL + D 
 # Multi-Seletor/Cursor = ALT + CLICK 
