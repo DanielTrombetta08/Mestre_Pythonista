@@ -52,7 +52,7 @@ def excluir_postagem(indice):
     except:
         return jsonify('Não foi possível encontrar a postagem para exclusão', 404)
     
-
+# Comando para rodar a cada etapa
 app.run(port=5000, host='localhost', debug=True)
 
 
