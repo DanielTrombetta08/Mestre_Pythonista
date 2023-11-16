@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from time import sleep
 
 
 def iniciar_driver():
@@ -24,18 +25,28 @@ def iniciar_driver():
 
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 
-titulo = driver.find_element(By.XPATH, '//*[text()="ZONA DE TESTES"]')
-# contains
-# or/and
-# starts-with
-# //tag[@atributo='valor'] => //button[@aria-label='Toggle']
-# //div[@id='select-class']//fieldset/h4
-# //thead//tr//th[3]
+botao_1 = driver.find_element(By.ID, 'btn1')
+botao_2 = driver.find_element(By.CLASS_NAME, 'btn2.btn.btn-dark')
+botao_3 = driver.find_element(By.CLASS_NAME, 'btn2.btn.btn-warning')
 
-if titulo:
-    print(titulo.text)
+if botao_1.is_enabled():
+    print('botão 1 esta habilitado')
+else:
+    print('botão 1 está desabilitado')
 
+if botao_2.is_enabled():
+    print('botão 2 esta habilitado')
+else:
+    print('botão 2 está desabilitado')
+
+if botao_3.is_enabled():
+    print('botão 3 esta habilitado')
+else:
+    print('botão 3 está desabilitado')
+
+    
 input('')
 driver.close()
+    

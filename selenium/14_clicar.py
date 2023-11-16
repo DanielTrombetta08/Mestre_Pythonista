@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from time import sleep
 
 
 def iniciar_driver():
@@ -26,16 +27,9 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 
-titulo = driver.find_element(By.XPATH, '//*[text()="ZONA DE TESTES"]')
-# contains
-# or/and
-# starts-with
-# //tag[@atributo='valor'] => //button[@aria-label='Toggle']
-# //div[@id='select-class']//fieldset/h4
-# //thead//tr//th[3]
-
-if titulo:
-    print(titulo.text)
-
+# encontrar um elemento e depois interagir com ele
+botao_dropdown = driver.find_element(By.ID, 'dropdownMenuButton')
+# botao_dropdown.click()
+driver.execute_script('arguments[0].click()', botao_dropdown)
 input('')
 driver.close()

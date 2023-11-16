@@ -1,8 +1,9 @@
+from tkinter import Radiobutton
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 
 def iniciar_driver():
@@ -26,16 +27,25 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 
-titulo = driver.find_element(By.XPATH, '//*[text()="ZONA DE TESTES"]')
-# contains
-# or/and
-# starts-with
-# //tag[@atributo='valor'] => //button[@aria-label='Toggle']
-# //div[@id='select-class']//fieldset/h4
-# //thead//tr//th[3]
+# tag(section,div,h4,button)
+# class(.btn)
+# combinação de class(.btn.btn-success)
+# Id (#dropDownMenuButton)
 
-if titulo:
-    print(titulo.text)
+# Para encontrar valores exatos
+# input[class='form-check-input']
+
+# Inicia com algum valor
+# input[class^='form']
+
+# finaliza com algum valor
+# input[class$='input']
+
+# Contem algum valor
+# input[class*='check']
+
+elemento_h2 = driver.find_element(By.CSS_SELECTOR,'h2')
+elementos_form_chec = driver.find_element(By.CSS_SELECTOR,'input[class="form-check-input"]')
 
 input('')
 driver.close()
