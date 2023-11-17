@@ -26,8 +26,16 @@ def iniciar_driver():
 
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
-driver.maximize_window()
-
+sleep(1)
+linux_radio_button = driver.find_element(By.ID, 'LinuxRadioButton')
+sleep(1)
+if linux_radio_button.is_selected():
+    print('botão selecionado')
+""" linux_radio_button.click()
+sleep(1)
+radios = driver.find_elements(By.XPATH, '//input[@type="radio"]')
+sleep(1)
+radios[1].click() """
 
 input('')
 driver.close()

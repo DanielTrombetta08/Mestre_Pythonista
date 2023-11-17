@@ -8,7 +8,7 @@ from time import sleep
 
 def iniciar_driver():
     chrome_options = Options()
-    arguments = ['--lang=pt-BR', '--window-size=800,600', '--incognito']
+    arguments = ['--lang=pt-BR', '--window-size=800,800', '--incognito']
     for argument in arguments:
         chrome_options.add_argument(argument)
 
@@ -26,8 +26,15 @@ def iniciar_driver():
 
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
-driver.maximize_window()
+driver.maximize_window() 
+checkbox1 = driver.find_element(By.ID, 'acessoNivel1Checkbox')
+checkbox2 = driver.find_element(By.ID, 'acessoNivel2Checkbox')
+checkbox3 = driver.find_element(By.ID, 'acessoNivel3Checkbox')
 
+checkbox1.click()
+checkbox2.click()
+if checkbox2.is_selected():
+    print('checkbox 2 selecionado')
 
 input('')
 driver.close()

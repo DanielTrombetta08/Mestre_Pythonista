@@ -25,8 +25,38 @@ def iniciar_driver():
 
 
 driver = iniciar_driver()
+# Navegar até o site
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
+sleep(1)
+# Encontrar e clicar no link de desafios
+botao_desafio = driver.find_element(By.LINK_TEXT, 'Desafios')
+sleep(1)
+botao_desafio.click()
+sleep(1)
+# Scroll
+driver.execute_script("window.scrollTo(0, 300);")
+sleep(1)
+# Encontrar e clicar no campo nome
+campo_nome = driver.find_element(By.ID, 'dadosusuario')
+sleep(1)
+# Digitar o nome
+campo_nome.send_keys('Daniel Trombetta')
+sleep(1)
+# Encontrar botão Clique aqui
+botao_enviar = driver.find_element(By.ID, 'desafio2')
+sleep(1)
+botao_enviar.click()
+sleep(1)
+# Encontrar campo que apareceu
+campo_novo = driver.find_element(By.ID, 'escondido')
+sleep(1)
+# Digitar o nome
+campo_novo.send_keys('Daniel Trombetta')
+sleep(1)
+# Clicar em Validar
+botao_validar = driver.find_element(By.ID, 'validarDesafio2')
+botao_validar.click()
 
 
 input('')

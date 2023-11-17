@@ -25,8 +25,32 @@ def iniciar_driver():
 
 
 driver = iniciar_driver()
+# Navegar até o site
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
+sleep(1)
+# Encontrar e clicar no link de login
+botao_login = driver.find_element(By.LINK_TEXT, 'Login')
+sleep(1)
+botao_login.click()
+sleep(1)
+# Encontrar e clicar no campo email
+campo_email = driver.find_element(By.NAME, 'email')
+sleep(1)
+# Digitar o email
+campo_email.send_keys('danieltrombetta@gmail.com')
+sleep(1)
+# Encontrar e clicar no campo senha
+campo_senha = driver.find_element(By.ID, 'senha')
+sleep(1)
+# Digitar a senha
+campo_senha.send_keys('123456')
+sleep(1)
+# Encontrar botão enviar
+botao_enviar = driver.find_element(By.CLASS_NAME, 'btn.btn-primary')
+sleep(1)
+botao_enviar.click()
+
 
 
 input('')
