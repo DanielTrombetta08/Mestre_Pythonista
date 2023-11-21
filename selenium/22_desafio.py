@@ -1,14 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from time import sleep
 
 
 def iniciar_driver():
     chrome_options = Options()
-    arguments = ['--lang=pt-BR', '--window-size=800,600', '--incognito']
+    arguments = ['--lang=pt-BR', '--window-size=800,1000', '--incognito']
     for argument in arguments:
         chrome_options.add_argument(argument)
 
@@ -25,19 +25,22 @@ def iniciar_driver():
 
 
 driver = iniciar_driver()
+# navegar até o site
 driver.get('https://cursoautomacao.netlify.app/desafios')
 driver.maximize_window()
-sleep(1)
-driver.execute_script("window.scrollTo(0, 800);")
-sleep(1)
-checkbox_conversivel = driver.find_element(By.ID, 'conversivelcheckbox')
-checkbox_offroad = driver.find_element(By.ID, 'offroadcheckbox')
+sleep(2)
+driver.execute_script("window.scrollTo(0, 1600);")
+sleep(2)
+checkboxes = driver.find_elements(By.XPATH, "//input[@name='carros']")
 
-checkbox_conversivel.click()
-sleep(1)
-checkbox_offroad.click()
+checkboxes[1].click()
+checkboxes[3].click()
+checkboxes[4].click()
+sleep(2)
 
-
+checkboxes_motos = driver.find_elements(By.XPATH, "//input[@name='motos']")
+for moto in checkboxes_motos:
+    moto.click()
 
 
 input('')
