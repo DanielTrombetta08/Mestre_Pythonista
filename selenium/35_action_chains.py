@@ -1,16 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from time import sleep
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
-
 
 
 def iniciar_driver():
     chrome_options = Options()
-    arguments = ['--lang=pt-BR', '--window-size=800,600', '--incognito']
+    arguments = ['--lang=pt-BR', '--window-size=1300,1000', '--incognito']
     for argument in arguments:
         chrome_options.add_argument(argument)
 
@@ -27,10 +27,18 @@ def iniciar_driver():
 
 
 driver = iniciar_driver()
-driver.implicitly_wait(10)
-driver.get('https://cursoautomacao.netlify.app/')
-driver.maximize_window()
+driver.get('https://cursoautomacao.netlify.app/exemplo_chains')
 
+# ActionChains(sequencia de passos)
+botao = driver.find_element(By.ID, 'botao-direito')
+chain = ActionChains(driver)
+chain.context_click(botao).pause(3).send_keys(Keys.DOWN).pause(3).send_keys(
+    Keys.DOWN).pause(3).send_keys(Keys.DOWN).pause(3).click().perform()
 
+""" driver.get('https://cursoautomacao.netlify.com/')
+window_10_radio_button = driver.find_element(By.ID, 'WindowsRadioButton')
+chain2 = ActionChains(driver)
+chain2.click(window_10_radio_button).pause(3).send_keys(
+    Keys.DOWN).pause(3).send_keys(Keys.UP).click().perform() """
 input('')
 driver.close()
