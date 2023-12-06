@@ -49,3 +49,11 @@ SCRAPY CRAWL (NOME DO SPIDER) -O DADOS.CSV
 
 - TESTAR O XPATH NO CONSOLE DO NAVEGADOR
 $x("XPATH")
+
+- BAIXAR DADOS EM JSON E XML
+-O para sobrescrever arquivos existentes
+-o para acrescentar dados a arquivos existentes(não funciona com json)
+
+scrapy crawl nomebot -O dados.csv
+scrapy crawl nomebot -O dados.xml
+scrapy crawl nomebot -O dados.json
