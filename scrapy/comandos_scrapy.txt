@@ -57,3 +57,6 @@ $x("XPATH")
 scrapy crawl nomebot -O dados.csv
 scrapy crawl nomebot -O dados.xml
 scrapy crawl nomebot -O dados.json
+
+- UNICODE CODE CONVERTER
+"https://r12a.github.io/app-conversion/"

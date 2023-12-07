@@ -1,9 +1,11 @@
 import scrapy
+from scrapy.loader import ItemLoader
+from varredor_de_sites.items import CitacaoItem
 
 
 class QuotesToReadSpider(scrapy.Spider):
     # identidade
-    name = 'citacao1'
+    name = 'citacao'
 
     # Request
     def start_requests(self):
@@ -15,11 +17,11 @@ class QuotesToReadSpider(scrapy.Spider):
     # Response
     def parse(self, response):
         for quote in response.xpath('//div[@class="quote"]'):
-            yield {
-                'frase': quote.xpath('.//span[@class="text"]/text()').get(),
-                'autor': quote.xpath('.//small[@class="author"]/text()').get(),
-                'tags': quote.xpath('.//div[@class="tags"]/a/text()').getall()
-            }
+            loader = ItemLoader(item=CitacaoItem(), selector=quote, response=response)
+            loader.add_xpath('frase', './/span[@class="text"]/text()')
+            loader.add_xpath('autor', './/small[@class="author"]/text()')
+            loader.add_xpath('tags', './/div[@class="tags"]/a/text()')
+            yield loader.load_item()
      
         try:
             link_proxima_pagina = response.xpath(
