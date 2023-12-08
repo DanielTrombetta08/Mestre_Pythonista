@@ -6,8 +6,12 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+import sqlite3
 
 
 class VarredorDeSitesPipeline:
     def process_item(self, item, spider):
         return item
+
+class SQLitePipeline(object):
+    pass
