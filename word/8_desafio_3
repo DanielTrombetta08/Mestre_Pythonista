@@ -1,0 +1,16 @@
+from docx import Document
+
+documento = Document('sampleEnchanced.docx')
+
+print(documento.paragraphs)
+
+print(documento.paragraphs[0].text)
+for index, item in enumerate(documento.paragraphs):
+    print(index)
+    print(item.text)
+
+documento.paragraphs[10].text = 'esse texto foi alterado'
+documento.paragraphs[22].text = 'Este parágrafo foi alterado'
+documento.paragraphs[33].text = 'Good morning'
+
+documento.save('Demov3.docx')
