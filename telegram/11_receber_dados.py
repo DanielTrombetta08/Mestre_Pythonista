@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # States(onde vem, o que fazer e para onde ir depois)
-ESCOLHER_OPCAO, LOGIN, REGISTRAR_EMAIL, REGISTRAR_SENHA = range(4)
+ESCOLHER_OPCAO, LOGIN, REGISTRAR_EMAIL, REGISTRAR_SENHA, REGISTRAR_CPF = range(5)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     reply_keyboard = [["Logar","Registrar"]]
@@ -43,11 +43,16 @@ async def registrar_senha(update:Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     return REGISTRAR_SENHA
 
+async def registrar_cpf(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    print(context.user_data)
+    context.user_data["senha"] = update.message.text
+    await update.message.reply_text("Digite seu CPF:")
 
+    return REGISTRAR_CPF
 
 async def finalizar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     if context.user_data.get('email'):
-        await update.message.reply_text(f'Cadastro Concluído! E-mail {context.user_data["email"]}, Senha: {update.message.text}')
+        await update.message.reply_text(f'Cadastro Concluído! E-mail {context.user_data["email"]}, Senha: {context.user_data["email"]}, CPF: {update.message.text}')
     else:
         await update.message.reply_text(f'Logado como {update.message.text}')
 
@@ -77,9 +82,12 @@ def main() -> None:
             REGISTRAR_EMAIL: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, registrar_senha)
         
-        
             ],
             REGISTRAR_SENHA:[
+                MessageHandler(filters.TEXT & ~filters.COMMAND, registrar_cpf)
+        
+            ],
+            REGISTRAR_CPF:[
                 MessageHandler(filters.TEXT & ~filters.COMMAND, finalizar)
         
             ]
